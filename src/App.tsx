@@ -4,6 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
+import Alertas from "./pages/Alertas.tsx";
+import { Tendencias, SalaSituacao, Indicadores, Execucao, GovernancaDigital, Metodologia } from "./pages/StubPages.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -16,7 +18,13 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/alertas" element={<Alertas />} />
+          <Route path="/tendencias" element={<Tendencias />} />
+          <Route path="/sala-situacao" element={<SalaSituacao />} />
+          <Route path="/indicadores" element={<Indicadores />} />
+          <Route path="/execucao" element={<Execucao />} />
+          <Route path="/governanca-digital" element={<GovernancaDigital />} />
+          <Route path="/metodologia" element={<Metodologia />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
