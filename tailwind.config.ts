@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Inter", "system-ui", "sans-serif"],
+        serif: ["Source Serif 4", "Georgia", "serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +61,21 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        gov: {
+          navy: "hsl(var(--gov-navy))",
+          "navy-light": "hsl(var(--gov-navy-light))",
+          blue: "hsl(var(--gov-blue))",
+          "blue-light": "hsl(var(--gov-blue-light))",
+          amber: "hsl(var(--gov-amber))",
+          "amber-light": "hsl(var(--gov-amber-light))",
+          green: "hsl(var(--gov-green))",
+          "green-light": "hsl(var(--gov-green-light))",
+          red: "hsl(var(--gov-red))",
+          "red-light": "hsl(var(--gov-red-light))",
+          gray: "hsl(var(--gov-gray))",
+          surface: "hsl(var(--gov-surface))",
+          "surface-elevated": "hsl(var(--gov-surface-elevated))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -65,25 +84,22 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "pulse-slow": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.6" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "pulse-slow": "pulse-slow 2s ease-in-out infinite",
       },
     },
   },
