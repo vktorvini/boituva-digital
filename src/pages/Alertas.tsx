@@ -1,8 +1,12 @@
 import { AppLayout } from "@/components/layout/AppLayout";
 import { AlertCard } from "@/components/dashboard/AlertCard";
-import { goldIndicadoresFiscais, formatPercent } from "@/data/mockData";
+import { DataState } from "@/components/ui/DataState";
+import { useIndicadoresFiscais } from "@/hooks/useGovernancaData";
+import { formatPercent } from "@/data/mockData";
 
 export default function Alertas() {
+  const { data, isLoading, isError, isEmpty } = useIndicadoresFiscais();
+
   return (
     <AppLayout>
       <div className="max-w-5xl mx-auto space-y-6">
@@ -12,18 +16,20 @@ export default function Alertas() {
             Monitoramento contínuo de indicadores que exigem atenção da gestão.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-3">
-          {goldIndicadoresFiscais.map((ind) => (
-            <AlertCard
-              key={ind.id}
-              title={ind.indicador}
-              description={ind.descricao}
-              status={ind.status}
-              value={formatPercent(ind.valor)}
-              indicator={`Limite legal: ${formatPercent(ind.limite_legal)}`}
-            />
-          ))}
-        </div>
+        <DataState isLoading={isLoading} isError={isError} isEmpty={isEmpty} emptyMessage="Nenhum indicador disponível">
+          <div className="grid grid-cols-1 gap-3">
+            {(data ?? []).map((ind) => (
+              <AlertCard
+                key={ind.id}
+                title={ind.indicador}
+                description={ind.descricao}
+                status={ind.status}
+                value={formatPercent(ind.valor)}
+                indicator={`Limite legal: ${formatPercent(ind.limite_legal)}`}
+              />
+            ))}
+          </div>
+        </DataState>
       </div>
     </AppLayout>
   );
